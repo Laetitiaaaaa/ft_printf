@@ -6,52 +6,44 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 10:15:42 by jchardin          #+#    #+#             */
-/*   Updated: 2019/01/14 15:47:34 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/01/15 20:32:23 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-
-int		ft_printf(const char *restrict format, ...)
+int		ft_printf(const char *format, ...)
 {
-	va_list		ap;
-	enum type	type;
-	int			i;
-	//char		*buffer;
+	s_my		s_f;
 
-    va_start(ap, format); //initialise le parcours des parametres optionnels
-	//attend deux arguments
-	// une variable de type va_list
-	// et le nom du dernier parametre obligatoire de la fonction courante
-	// la fonction doit etre appeller avant toute operation sur les parametres optionels
-    //    va_arg(ap, type);
-		//la macro fonction va_arg retourne le parametre optionel suivant 
-		//en considerant  celui-ci comme de type "type"
-		//attend deux arguments
-		//une variable de type va_list prcedement initialise par va_start
-		//et le type du parametre optionel suivant
+	ft_init_struct(&s_f);
+	s_f.format = (char*)format;
 
-	i = -1;
-	while (format[++i])
+	va_start(s_f.ap, format);
+	s_f.j = 0;
+	s_f.i = 0;
+	while (format[s_f.i])
 	{
-		if (format[i] == '%' && format[i + 1] == 'd')
-			type = TYPE_INT;
-		if (format[i] == '%' && format[i + 1] == 'f')
-			type = TYPE_FLOAT;
+		s_f.nom_fonction = NOTHING;
+		if (format[s_f.i] == '%')
+		{
+			(format[s_f.i + 1] == 'd') ? s_f.nom_fonction = POURCENT_D : NOTHING;
+			(format[s_f.i + 1] == 'f') ? s_f.nom_fonction = POURCENT_F : NOTHING;
+		}
+		if (s_f.nom_fonction != NOTHING)
+			s_f.buffer = ft_add_value(&s_f);
+		(s_f.i)++;
 	}
-
-		if( type == TYPE_INT)
-			printf("un entier =%d\n", va_arg(ap, int));
-		if (type == TYPE_FLOAT)
-			printf("Un flottant =%f", (float)va_arg(ap, double));
-    va_end(ap);
-	//met fin au parcours des arguments optionnels
+	s_f.buffer = ft_end_of_format(&s_f);
+	va_end(s_f.ap);
+	ft_putstr(s_f.buffer);
+	free(s_f.buffer);
 	return (1);
 }
 
 int		main(void)
 {
-	ft_printf("Il y a %f gilet jaunes\n", 3.4);
+	ft_printf("Il y a %f gilet jaunes sur %d rond point\n", 10.4, 3);
 	return (0);
 }
+
