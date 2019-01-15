@@ -6,7 +6,7 @@
 /*   By: llejeune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 13:25:56 by llejeune          #+#    #+#             */
-/*   Updated: 2019/01/15 14:53:22 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/15 15:02:24 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 char	*ft_itoa_10tox(int n, int a)
 {
-	int 	i;
+	int		i;
 	int		c;
 	char	*tab;
 	char	*str;
