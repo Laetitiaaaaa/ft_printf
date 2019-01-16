@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 10:15:42 by jchardin          #+#    #+#             */
-/*   Updated: 2019/01/15 20:32:23 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/01/16 17:21:19 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		ft_printf(const char *format, ...)
 
 	ft_init_struct(&s_f);
 	s_f.format = (char*)format;
-
 	va_start(s_f.ap, format);
 	s_f.j = 0;
 	s_f.i = 0;
@@ -46,4 +45,3 @@ int		main(void)
 	ft_printf("Il y a %f gilet jaunes sur %d rond point\n", 10.4, 3);
 	return (0);
 }
-

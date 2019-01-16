@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:13:34 by jchardin          #+#    #+#             */
-/*   Updated: 2019/01/15 20:32:21 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/01/16 17:20:37 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ char			*ft_add_value(s_my *s_f)
 	int			decalage;
 	char		*format;
 
-
 	format = &(s_f->format[s_f->j]);
 	if (s_f->first == 1)
 		decalage = 0;
 	else
 		decalage = 2;
 	inner_buf = ft_strnew(s_f->i - (s_f->j + decalage));
-	inner_buf = ft_strncpy(inner_buf, &format[decalage],(size_t)(s_f->i - (s_f->j + decalage)));
+	inner_buf = ft_strncpy(inner_buf,
+			&format[decalage], (size_t)(s_f->i - (s_f->j + decalage)));
 	result = s_f->liste_fonction[s_f->nom_fonction](s_f);
 	inner_buf = ft_strjoin_free(inner_buf, result);
 	s_f->buffer = ft_strjoin_free(s_f->buffer, inner_buf);
@@ -80,7 +80,7 @@ char			*ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
-void	ft_init_struct(s_my *s_f)
+void			ft_init_struct(s_my *s_f)
 {
 	s_f->liste_fonction[POURCENT_D] = ft_pourcent_d;
 	s_f->liste_fonction[POURCENT_F] = ft_pourcent_f;
@@ -89,9 +89,9 @@ void	ft_init_struct(s_my *s_f)
 	s_f->first = 1;
 }
 
-char		*ft_pourcent_d(s_my *s_f)
+char			*ft_pourcent_d(s_my *s_f)
 {
-	char *result;
+	char	*result;
 	int		my_result;
 
 	my_result = va_arg(s_f->ap, int);
@@ -99,7 +99,7 @@ char		*ft_pourcent_d(s_my *s_f)
 	return (result);
 }
 
-char		*ft_pourcent_f(s_my *s_f)
+char			*ft_pourcent_f(s_my *s_f)
 {
 	char		*result;
 	float		my_result;
