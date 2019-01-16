@@ -6,7 +6,7 @@
 /*   By: llejeune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 15:37:14 by llejeune          #+#    #+#             */
-/*   Updated: 2019/01/16 15:23:38 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:25:36 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_champs(char *s, int n, char *c)
 	int		j;
 	char	*tab;
 
-	if (c[0] == '-')
-		return (s);
 	i = ft_strlen(s);
 	j = n - i;
 	if (n > (int)i)
