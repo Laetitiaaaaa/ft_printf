@@ -6,13 +6,14 @@
 /*   By: llejeune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 13:25:56 by llejeune          #+#    #+#             */
-/*   Updated: 2019/01/15 15:40:52 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/16 13:50:40 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
+#include "../libft/libft.h"
 
-char	*ft_itoa_base(int n, int a)
+char	*ft_itoa_base(int n, int b, int a)
 {
 	int		i;
 	int		c;
