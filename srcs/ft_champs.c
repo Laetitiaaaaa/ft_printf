@@ -6,17 +6,20 @@
 /*   By: llejeune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 15:37:14 by llejeune          #+#    #+#             */
-/*   Updated: 2019/01/16 14:58:18 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:23:38 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "./libft/libft.h"
 
-char	*ft_champs(char *s, int n, char c)
+#include "../libft/libft.h"
+
+char	*ft_champs(char *s, int n, char *c)
 {
 	size_t	i;
 	int		j;
 	char	*tab;
 
+	if (c[0] == '-')
+		return (s);
 	i = ft_strlen(s);
 	j = n - i;
 	if (n > (int)i)
@@ -27,19 +30,12 @@ char	*ft_champs(char *s, int n, char c)
 		while (n >= 0)
 		{
 			while (n >= j)
-			{
-				tab[n] = s[i];
-				i--;
-				n--;
-			}
-			tab[n] = c;
+				tab[n--] = s[i--];
+			tab[n] = c[0];
 			n--;
 		}
 	}
 	else
-	{
-		tab = ft_strnew(i);
-		ft_memcpy(tab, s, i);
-	}
+		return (s);
 	return (tab);
 }
