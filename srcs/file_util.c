@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:13:34 by jchardin          #+#    #+#             */
-/*   Updated: 2019/01/16 17:20:37 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/17 17:13:08 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,78 @@ void			ft_init_struct(s_my *s_f)
 {
 	s_f->liste_fonction[POURCENT_D] = ft_pourcent_d;
 	s_f->liste_fonction[POURCENT_F] = ft_pourcent_f;
+	s_f->liste_fonction[POURCENT_X] = ft_pourcent_x;
+	s_f->liste_fonction[POURCENT_C] = ft_pourcent_c;
+	s_f->liste_fonction[POURCENT_S] = ft_pourcent_s;
+	s_f->liste_fonction[POURCENT_O] = ft_pourcent_o;
+	s_f->liste_fonction[POURCENT_XX] = ft_pourcent_X;
+	s_f->liste_fonction[POURCENT_U] = ft_pourcent_u;
 	s_f->buffer = NULL;
 	s_f->buffer = ft_strnew(0);
 	s_f->first = 1;
+}
+
+char			*ft_pourcent_u(s_my *s_f)
+{
+	char				*result;
+	unsigned int		my_result;
+
+	my_result = va_arg(s_f->ap, unsigned int);
+	result = ft_utoa(my_result);
+	return (result);
+}
+
+char			*ft_pourcent_X(s_my *s_f)
+{
+	char	*result;
+	char	*temp;
+	int		my_result;
+
+	my_result = va_arg(s_f->ap, int);
+	temp = ft_itoa_base(my_result, 16);
+	result = ft_xtoX(temp);
+	free(temp);
+	return (result);
+}
+
+char			*ft_pourcent_o(s_my *s_f)
+{
+	char	*result;
+	int		my_result;
+
+	my_result = va_arg(s_f->ap, int);
+	result = ft_itoa_base(my_result, 8);
+	return (result);
+}
+
+char			*ft_pourcent_s(s_my *s_f)
+{
+	char	*result;
+	char	*my_result;
+
+	my_result = va_arg(s_f->ap, char*);
+	result = ft_string(my_result);
+	return (result);
+}
+
+char			*ft_pourcent_c(s_my *s_f)
+{
+	char	*result;
+	int		my_result;
+
+	my_result = va_arg(s_f->ap, int);
+	result = ft_char(my_result);
+	return (result);
+}
+
+char			*ft_pourcent_x(s_my *s_f)
+{
+	char	*result;
+	int		my_result;
+
+	my_result = va_arg(s_f->ap, int);
+	result = ft_itoa_base(my_result, 16);
+	return (result);
 }
 
 char			*ft_pourcent_d(s_my *s_f)
@@ -109,3 +178,5 @@ char			*ft_pourcent_f(s_my *s_f)
 	result = ft_strdup("-1");
 	return (result);
 }
+
+

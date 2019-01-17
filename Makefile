@@ -6,14 +6,14 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/14 15:34:59 by jchardin          #+#    #+#              #
-#    Updated: 2019/01/14 15:42:40 by jchardin         ###   ########.fr        #
+#    Updated: 2019/01/17 16:30:05 by llejeune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = exe_printf
 
-SRC = file_util.c  ft_printf.c
+SRC = file_util.c  ft_printf.c  ft_itoa_base.c  ft_utoa.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -45,7 +45,7 @@ fclean: clean
 re: fclean $(NAME)
 
 me: re
-	norminette includes/ft_printf.h ./srcs
-	ctags -R
+#	norminette includes/ft_printf.h ./srcs
+#	ctags -R
 
 .PHONY: all clean fclean re
