@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:13:34 by jchardin          #+#    #+#             */
-/*   Updated: 2019/01/17 17:13:08 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/19 13:51:27 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,30 @@ void			ft_init_struct(s_my *s_f)
 	s_f->liste_fonction[POURCENT_O] = ft_pourcent_o;
 	s_f->liste_fonction[POURCENT_XX] = ft_pourcent_X;
 	s_f->liste_fonction[POURCENT_U] = ft_pourcent_u;
+	s_f->liste_fonction[POURCENT_P] = ft_pourcent_p;
 	s_f->buffer = NULL;
 	s_f->buffer = ft_strnew(0);
 	s_f->first = 1;
+}
+
+char			*ft_pourcent_p(s_my *s_f)
+{
+	char	*result;
+	void	*my_result;
+
+	my_result = va_arg(s_f->ap, void*);
+	result = ft_pointeur(my_result);
+	return (result);
+}
+
+char			*ft_pourcent_f(s_my *s_f)
+{
+	char		*result;
+	double		my_result;
+
+	my_result = va_arg(s_f->ap, double);
+	result = ft_ftoa(my_result);
+	return (result);
 }
 
 char			*ft_pourcent_u(s_my *s_f)
@@ -167,16 +188,3 @@ char			*ft_pourcent_d(s_my *s_f)
 	result = ft_itoa(my_result);
 	return (result);
 }
-
-char			*ft_pourcent_f(s_my *s_f)
-{
-	char		*result;
-	float		my_result;
-
-	my_result = (float)va_arg(s_f->ap, double);
-	my_result += 2;
-	result = ft_strdup("-1");
-	return (result);
-}
-
-

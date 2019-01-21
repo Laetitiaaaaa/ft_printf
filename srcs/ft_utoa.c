@@ -6,14 +6,13 @@
 /*   By: llejeune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:12:33 by llejeune          #+#    #+#             */
-/*   Updated: 2019/01/17 19:02:38 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/19 14:30:38 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
-static int		ft_size(unsigned int a)
+int			ft_size(unsigned int a)
 {
 	int		c;
 
@@ -41,10 +40,10 @@ char			*ft_utoa(unsigned int	a)
 		a = a / 10;
 		i--;
 	}
-	str[0] = a + 48;;
+	str[0] = a + 48;
 	return (str);
 }
-/*#include <stdio.h>
+
 char			*ft_ftoa(double f)
 {
 	double	d;
@@ -53,22 +52,31 @@ char			*ft_ftoa(double f)
 
 	str = ft_itoa((int)f);
 	tmp = ft_strjoin(str, ".");
-	while ((f - (int)f) != 0)
+	free(str);
+	while ((int)f != 0)
 	{
-		printf("f = %f & (int)f = %d\n", f, (int)f);
+//		printf("f = %f\n", f);
+//		printf("(int)f = %d\n", (int)f);
 		d = f - (int)f;
-		printf("d = %f\n", d);
 		d = d * 10;
-		printf("D = %f\n", d);
-		tmp = ft_strjoin(tmp, ft_itoa((int)d));
+//		printf("d = %f\n", d);
+		tmp = ft_strjoin_free(tmp, ft_itoa(d));
+//	printf("tmp = %s\n", tmp);
 		f = d;
 	}
 	return (tmp);
 }
 
-int		main()
+char			*ft_pointeur(void	*p)
 {
-	double f = 42.35875;
-	printf("%s\n", ft_ftoa(f));
-	return (0);
-}*/
+	char		*x;
+	char		*tab;
+	char		*res;
+
+	if (!(tab = (char *)malloc(sizeof(char) * 6)))
+		return (NULL);
+	tab = "0xfff";
+	x = ft_itoa_base((int)p, 16);
+	res = ft_strjoin(tab, x);
+	return (res);
+}

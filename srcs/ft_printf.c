@@ -6,12 +6,11 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 10:15:42 by jchardin          #+#    #+#             */
-/*   Updated: 2019/01/17 17:13:06 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/19 14:33:24 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
 int		ft_printf(const char *format, ...)
 {
@@ -36,6 +35,7 @@ int		ft_printf(const char *format, ...)
 			(format[s_f.i + 1] == 's') ? s_f.nom_fonction = POURCENT_S : NOTHING;
 			(format[s_f.i + 1] == 'X') ? s_f.nom_fonction = POURCENT_XX : NOTHING;
 			(format[s_f.i + 1] == 'u') ? s_f.nom_fonction = POURCENT_U : NOTHING;
+			(format[s_f.i + 1] == 'p') ? s_f.nom_fonction = POURCENT_P : NOTHING;
 		}
 		if (s_f.nom_fonction != NOTHING)
 			s_f.buffer = ft_add_value(&s_f);
@@ -50,6 +50,16 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	ft_printf("Il y a %i %o %x %X %cilet(s) %s(s) sur %u ronds-points.", 42, 42, 42, 42, 'g', "jaune", 4294967295);
+	double d = 42.68000001;
+	float f = 42.68000001;
+	int	i = 2;
+
+/*	printf("d = %f\n", d);
+	ft_printf("D = %f\n", d);
+	printf("f = %f\n", f);
+	ft_printf("F = %f\n", f);*/
+	printf("o = %o\n", -1);
+
+	ft_printf("Il y a %i %o %x %X %cilet(s) %s(s) sur %u routes, %f batiments et %f ronds-points, domicilies a %p.", 42, -42, 42, 42, 'g', "jaune", 4294967295, d, f, &i);
 	return (0);
 }
