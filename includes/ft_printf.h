@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 10:19:29 by jchardin          #+#    #+#             */
-/*   Updated: 2019/01/17 16:31:54 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/21 15:01:22 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define POURCENT_O 6
 # define POURCENT_XX 7
 # define POURCENT_U 8
+# define POURCENT_P 9
 # define NOTHING 2
 
 typedef struct	t_my
@@ -54,10 +55,14 @@ char			*ft_pourcent_s(s_my *s_f);
 char			*ft_pourcent_o(s_my *s_f);
 char			*ft_pourcent_X(s_my *s_f);
 char			*ft_pourcent_u(s_my *s_f);
-char			*ft_itoa_base(int n, int a);
+char			*ft_pourcent_p(s_my *s_f);
+char			*ft_itoa_base(int n, unsigned int a);
 char			*ft_char(char c);
 char			*ft_string(char *s);
 char			*ft_xtoX(char *s);
 char			*ft_utoa(unsigned int a);
+int				ft_size(unsigned int a);
+char			*ft_ftoa(double f);
+char			*ft_pointeur(void	*p);
 
 #endif

@@ -6,23 +6,23 @@
 /*   By: llejeune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 13:25:56 by llejeune          #+#    #+#             */
-/*   Updated: 2019/01/17 13:52:07 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/21 13:56:09 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-char	*ft_itoa_base(int n, int a)
+char	*ft_itoa_base(int n, unsigned int a)
 {
-	int		i;
-	int		c;
-	char	*tab;
-	char	*str;
+	unsigned int	i;
+	int				c;
+	char			*tab;
+	char			*str;
 
-	i = n;
 	c = 1;
 	str = "0123456789abcdef";
+	i = (unsigned int)n;
 	while (i >= a)
 	{
 		i = i / a;
@@ -30,12 +30,11 @@ char	*ft_itoa_base(int n, int a)
 	}
 	if (!(tab = (char *)malloc(sizeof(char) * (c + 1))))
 		return (NULL);
-	tab[c] = 0;
-	c--;
-	while (n >= a)
+	tab[c--] = 0;
+	while ((unsigned int)n >= a)
 	{
-		tab[c] = str[n % a];
-		n = n / a;
+		tab[c] = str[(unsigned int)n % a];
+		n = (unsigned int)n / a;
 		c--;
 	}
 	tab[c] = str[n];

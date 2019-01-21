@@ -6,7 +6,7 @@
 /*   By: llejeune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:12:33 by llejeune          #+#    #+#             */
-/*   Updated: 2019/01/19 14:30:38 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/21 15:01:20 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,28 @@ char			*ft_utoa(unsigned int	a)
 
 char			*ft_ftoa(double f)
 {
+	int 	i;
 	double	d;
 	char	*str;
 	char	*tmp;
 
+	i = 6;
 	str = ft_itoa((int)f);
 	tmp = ft_strjoin(str, ".");
 	free(str);
-	while ((int)f != 0)
+	while (i != 0)
 	{
 //		printf("f = %f\n", f);
 //		printf("(int)f = %d\n", (int)f);
 		d = f - (int)f;
 		d = d * 10;
 //		printf("d = %f\n", d);
+		if (i - 1 == 0 && (d * 10 > 4))
+			d++;
 		tmp = ft_strjoin_free(tmp, ft_itoa(d));
 //	printf("tmp = %s\n", tmp);
 		f = d;
+		i--;
 	}
 	return (tmp);
 }

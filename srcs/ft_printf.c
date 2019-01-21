@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 10:15:42 by jchardin          #+#    #+#             */
-/*   Updated: 2019/01/19 14:33:24 by llejeune         ###   ########.fr       */
+/*   Updated: 2019/01/21 15:01:22 by llejeune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,15 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	double d = 42.68000001;
-	float f = 42.68000001;
+	double d = 42.123456789;
+	float f = 42.123456789;
 	int	i = 2;
 
-/*	printf("d = %f\n", d);
+	printf("d = %f\n", d);
 	ft_printf("D = %f\n", d);
 	printf("f = %f\n", f);
-	ft_printf("F = %f\n", f);*/
-	printf("o = %o\n", -1);
+	ft_printf("F = %f\n", f);
 
-	ft_printf("Il y a %i %o %x %X %cilet(s) %s(s) sur %u routes, %f batiments et %f ronds-points, domicilies a %p.", 42, -42, 42, 42, 'g', "jaune", 4294967295, d, f, &i);
+	ft_printf("Il y a %i %o %x %X %cilet(s) %s(s) sur %u routes, %f batiments et %f ronds-points, domicilies a %p.", 42, 42, -1, 42, 'g', "jaune", 4294967295, d, f, &i);
 	return (0);
 }
